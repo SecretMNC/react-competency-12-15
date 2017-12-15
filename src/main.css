@@ -1,0 +1,13 @@
+:root {
+  --main-font-family: sans-serif;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar > Link{
+  font-family: var(--main-font-family);
+  text-decoration: none;
+}

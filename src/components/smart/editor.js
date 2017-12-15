@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import Footer from '../dumb/footer';
 
-export default class Builder extends Component {
+export default class Editor extends Component {
     constructor(){
         super()
         
         this.state = {
-            location: 'Builder'
+            location: 'Editor'
         }
     }
     render() {
         return (
             <div>
-                <p>This is the Builder Component. It can't do anything yet.</p>
+                <p>This is the Editor Component. It can't do anything yet.</p>
                 <Footer 
-                location="Builder"/>
+                location={this.state.location}/>
             </div>
         )
     }
