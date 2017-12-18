@@ -26,7 +26,7 @@ export default class Search extends Component {
     }
 
     searchBios() {
-        axios.get(`/api/get/bios/name/${this.state.searchTerm}`).then(res =>
+        axios.get(`/api/bios/name/${this.state.searchTerm}`).then(res =>
             this.setState({
                 list: res.data
             })

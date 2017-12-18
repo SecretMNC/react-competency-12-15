@@ -57,7 +57,7 @@ export default class Builder extends Component {
 
     submitForms() {
         //COMP 44C AXIOS
-        axios.post('/api/create/bios', {
+        axios.post('/api/bios', {
             fullname: this.state.name,
             date_of_birth: this.state.birthday,
             place_of_birth: this.state.birthplace,

@@ -6,6 +6,7 @@ const express = require("express")
     , PORT = 8080;
 
 app.use(bodyParser.json());
+//COMP 74C INVOKE EXPRESS
 app.use(express.static(`${__dirname}/../build`));
 
 massive(process.env.CONNECTION_STRING).then((db) => {
@@ -14,7 +15,8 @@ massive(process.env.CONNECTION_STRING).then((db) => {
 });
 
 // create a bio
-app.post('/api/create/bios', (req, res) => {
+//COMP 74D-3 .POST
+app.post('/api/bios', (req, res) => {
     const db = req.app.get('db')
     const { fullname, date_of_birth, place_of_birth, how_tall, body } = req.body;
 
@@ -26,7 +28,8 @@ app.post('/api/create/bios', (req, res) => {
 
 
 // get specific bio
-app.get(`/api/get/bios/:bioID`, (req, res) => {
+//COMP 74D-1 .GET
+app.get(`/api/bios/id/:bioID`, (req, res) => {
     const db = req.app.get('db')
 
     db.get_bio_byid([req.params.bioID])
@@ -36,7 +39,7 @@ app.get(`/api/get/bios/:bioID`, (req, res) => {
 });
 
 // get bios by name
-app.get(`/api/get/bios/name/:fullname`, (req, res) => {
+app.get(`/api/bios/name/:fullname`, (req, res) => {
     const db = req.app.get('db')
 
     db.get_bio_byname([req.params.fullname])
@@ -46,7 +49,8 @@ app.get(`/api/get/bios/name/:fullname`, (req, res) => {
 });
 
 //update spectic bio
-app.put('/api/update/bios/:yourname', (req, res) => {
+//COMP 74D-2 .PUT
+app.put('/api/bios/:yourname', (req, res) => {
     const db = req.app.get('db')
 
     db.update_bio([req.params.yourname])
@@ -56,7 +60,8 @@ app.put('/api/update/bios/:yourname', (req, res) => {
 });
 
 //delete specific bio
-app.delete('/api/delete/bios/:yourname', (req, res) => {
+//COMP 74D-4 .DELETE
+app.delete('/api/bios/:bioID', (req, res) => {
     const db = req.app.get('db')
 
     db.delete_bio([req.params.yourname])

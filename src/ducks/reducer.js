@@ -16,7 +16,7 @@ const GET_SELECTED_BIO = 'GET_SELECTED_BIO';
 export function getBio(bioID) {
     return {
         type: GET_SELECTED_BIO,
-        payload: axios.get(`/api/get/bios/${bioID}`).then(res => res)
+        payload: axios.get(`/api/bios/id/${bioID}`).then(res => res)
     }
 }
 
