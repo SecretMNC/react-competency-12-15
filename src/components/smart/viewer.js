@@ -34,6 +34,7 @@ class Viewer extends Component {
     }
 }
 
+//COMP 43H mapStateToProps
 function mapStateToProps(state) {
     console.log('state', state)
     return {
@@ -41,4 +42,5 @@ function mapStateToProps(state) {
     }
 }
 
+// COMP 43C CAN CONNECT
 export default connect(mapStateToProps, { getBio })(Viewer)

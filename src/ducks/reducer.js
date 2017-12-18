@@ -12,6 +12,7 @@ const initialState = {
 
 const GET_SELECTED_BIO = 'GET_SELECTED_BIO';
 
+//COMP 43E ACTIONS
 export function getBio(bioID) {
     return {
         type: GET_SELECTED_BIO,
@@ -19,6 +20,7 @@ export function getBio(bioID) {
     }
 }
 
+//COMP 43D REDUCER
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case 'GET_SELECTED_BIO_FULLFILLED':
