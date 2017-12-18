@@ -1,3 +1,5 @@
+//COMP 72C DEMONSTRATE NODE FILES (everything works)
+
 require("dotenv").config();
 const express = require("express")
     , bodyParser = require("body-parser")
@@ -5,10 +7,12 @@ const express = require("express")
     , app = express()
     , PORT = 8080;
 
+//COMP 76F BODY PARSER
 app.use(bodyParser.json());
 //COMP 74C INVOKE EXPRESS
 app.use(express.static(`${__dirname}/../build`));
 
+//COMP 70C 70F 70K MASSIVE CONNECTION, DB FOLDER, QUERY FUNCTION
 massive(process.env.CONNECTION_STRING).then((db) => {
     console.log('db is connected');
     app.set('db', db);
@@ -39,21 +43,25 @@ app.get(`/api/bios/id/:bioID`, (req, res) => {
 });
 
 // get bios by name
-app.get(`/api/bios/name/:fullname`, (req, res) => {
-    const db = req.app.get('db')
+app.get(`/api/bios/name`, (req, res) => {
+    if (req.query.fullname) {
+        const db = req.app.get('db')
 
-    db.get_bio_byname([req.params.fullname])
-        .then(bio => {
-            res.status(200).send(bio)
-        }).catch(err => res.status(500).send(err))
+        db.get_bio_byname([req.query.fullname])
+            .then(bio => {
+                res.status(200).send(bio)
+            }).catch(err => res.status(500).send(err))
+    }
 });
 
 //update spectic bio
 //COMP 74D-2 .PUT
 app.put('/api/bios/:yourname', (req, res) => {
     const db = req.app.get('db')
+    const { fullname, date_of_birth, place_of_birth, how_tall, body } = req.body;
 
-    db.update_bio([req.params.yourname])
+
+    db.update_bio([fullname, date_of_birth, place_of_birth, how_tall, body, req.params.yourname])
         .then(bio => {
             res.status(200).send(bio)
         }).catch(err => res.status(500).send(err))
@@ -64,7 +72,7 @@ app.put('/api/bios/:yourname', (req, res) => {
 app.delete('/api/bios/:bioID', (req, res) => {
     const db = req.app.get('db')
 
-    db.delete_bio([req.params.yourname])
+    db.delete_bio([req.params.bioID])
         .then(bio => {
             res.status(200).send(bio)
         }).catch(err => res.status(500).send(err))

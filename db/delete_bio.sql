@@ -1,2 +1,2 @@
 delete from bio_info
-where fullname = $1;
+where id = $1;

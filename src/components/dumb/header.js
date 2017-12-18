@@ -6,7 +6,6 @@ const Header = () => {
         <div className="navbar">
             <Link to="/">Home</Link>
             <Link to="/bio-builder">Build A Bio</Link>
-            <Link to="/bio-editor">Edit A Bio</Link>
             <Link to="/search">Search For Bios</Link>
         </div>
     )

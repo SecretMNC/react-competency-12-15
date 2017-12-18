@@ -42,3 +42,8 @@ div {
   margin-left: auto;
   margin-right: auto;
 }
+
+.disabled-input:disabled {
+  background: grey;
+  color: white;
+}

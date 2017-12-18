@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Footer from '../dumb/footer';
+import { Link } from 'react-router-dom';
+
 
 export default class Builder extends Component {
     constructor() {
@@ -66,7 +68,7 @@ export default class Builder extends Component {
             //COMP 44D PROMISES (.THEN)
         }).then(response => {
             if (response) {
-                alert(`You have successfully submitted the bio, ${this.state.name}!`)
+                alert(`You have successfully submitted the bio, ${this.state.name}! Go to the search page to find your newly created Bio.`)
             }
         })
     }
@@ -87,9 +89,11 @@ export default class Builder extends Component {
                     <input placeholder="Height? ex 5 feet 10 inches" onChange={this.updateHeight} />
 
                 </div>
-                <textarea cols="100" rows="25" placeholder="Type your biography here" onChange={this.updateBio}></textarea>
+                <textarea cols="100" rows="25" placeholder="Type your biography here*" onChange={this.updateBio}></textarea>
 
+                <Link to='/search'>
                 <button title='Submit' onClick={this.submitForms}>Submit</button>
+                </Link>
                 <Footer
                     location="Builder" />
             </div>

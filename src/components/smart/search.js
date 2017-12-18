@@ -26,7 +26,9 @@ export default class Search extends Component {
     }
 
     searchBios() {
-        axios.get(`/api/bios/name/${this.state.searchTerm}`).then(res =>
+        //COMP 76C RESTful urls
+        //COMP 76E QUERY
+        axios.get(`/api/bios/name?fullname=${this.state.searchTerm}`).then(res =>
             this.setState({
                 list: res.data
             })

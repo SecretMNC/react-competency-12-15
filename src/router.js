@@ -14,7 +14,7 @@ export default (
             {/* COMP 42H COMPONENT */}
             <Route exact path='/' component={Home}/>
             <Route path='/bio-builder' component={Builder}/>
-            <Route path='/bio-editor' component={Editor}/>
+            <Route path='/bio-editor/:bioID' component={Editor}/>
             <Route path='/search' component={Search}/>
             <Route path='/view/:bioID' component={Viewer}/>
         </Switch>
