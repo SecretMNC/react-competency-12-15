@@ -11,3 +11,13 @@
   font-family: var(--main-font-family);
   text-decoration: none;
 }
+
+div {
+  margin-left: 20px;
+}
+
+.inputs {
+  display: flex; 
+  flex-direction: column;
+  width: 300px;
+}
