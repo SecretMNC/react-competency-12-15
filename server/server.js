@@ -8,6 +8,10 @@ const express = require("express")
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../build`));
 
+massive(process.env.CONNECTION_STRING).then((db) => {
+    console.log('db is connected');
+    app.set('db', db);
+});
 
 // create a bio
 app.post('/api/create/bios', (req, res) => {
@@ -50,3 +54,5 @@ app.delete('/api/delete/bios/:yourname', (req, res) => {
             res.status(200).send(bio)
         }).catch(err => res.status(500).send(err))
 });
+
+app.listen(PORT, () => (console.log(`Listening on port ${PORT}`)));
