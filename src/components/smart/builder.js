@@ -80,9 +80,9 @@ export default class Builder extends Component {
                 <p>* = required </p>
 
                 <div className="inputs">
-                    <input placeholder="First and last name*" onChange={this.updateName} />
+                    <input placeholder="Name*" onChange={this.updateName} />
 
-                    <input placeholder="Birth date? ex 1999-12-31 : YYYY-DD-MM" onChange={this.updateBirthday} />
+                    <input placeholder="Birth date?* ex 1999-12-31 : YYYY-DD-MM" onChange={this.updateBirthday} />
 
                     <input placeholder="Birth place? ex Provo, UT" onChange={this.updateBirthPlace} />
 
