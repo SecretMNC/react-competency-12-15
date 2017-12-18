@@ -26,10 +26,20 @@ app.post('/api/create/bios', (req, res) => {
 
 
 // get specific bio
-app.get(`/api/get/bios/:yourname`, (req, res) => {
+app.get(`/api/get/bios/:bioID`, (req, res) => {
     const db = req.app.get('db')
 
-    db.get_bio_byname([req.params.yourname])
+    db.get_bio_byid([req.params.bioID])
+        .then(bio => {
+            res.status(200).send(bio)
+        }).catch(err => res.status(500).send(err))
+});
+
+// get bios by name
+app.get(`/api/get/bios/name/:fullname`, (req, res) => {
+    const db = req.app.get('db')
+
+    db.get_bio_byname([req.params.fullname])
         .then(bio => {
             res.status(200).send(bio)
         }).catch(err => res.status(500).send(err))

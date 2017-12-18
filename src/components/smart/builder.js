@@ -23,6 +23,8 @@ export default class Builder extends Component {
         this.submitForms = this.submitForms.bind(this);
     }
 
+
+    //COMP 36J EVENT HANDELING
     updateName(e) {
         this.setState({
             name: e.target.value
@@ -54,12 +56,14 @@ export default class Builder extends Component {
     }
 
     submitForms() {
+        //COMP 44C AXIOS
         axios.post('/api/create/bios', {
             fullname: this.state.name,
             date_of_birth: this.state.birthday,
             place_of_birth: this.state.birthplace,
             how_tall: this.state.height,
             body: this.state.bio
+            //COMP 44D PROMISES (.THEN)
         }).then(response => {
             if (response) {
                 alert(`You have successfully submitted the bio, ${this.state.name}!`)

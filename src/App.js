@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './main.css';
 import router from './router';
 import Header from './components/dumb/header';
@@ -16,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

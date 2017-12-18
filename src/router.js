@@ -4,6 +4,7 @@ import Home from './components/dumb/home';
 import Builder from './components/smart/builder';
 import Editor from './components/smart/editor';
 import Search from './components/smart/search';
+import Viewer from './components/smart/viewer';
 
 export default (
     <div>
@@ -15,6 +16,7 @@ export default (
             <Route path='/bio-builder' component={Builder}/>
             <Route path='/bio-editor' component={Editor}/>
             <Route path='/search' component={Search}/>
+            <Route path='/view/:bioID' component={Viewer}/>
         </Switch>
     </div>
 )

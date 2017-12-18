@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
-import Footer from '../dumb/footer';
+import { connect } from 'react-redux';
+import { getBio } from '../../ducks/reducer';
 
-export default class Viewer extends Component {
+class Viewer extends Component {
     //COMP 36E PROPS BEING PASSED INTO SMART COMPONENT
-    constructor(props){
-        super(props)
+    constructor() {
+        super()
         //COMP 36D SETTING STATE
         this.state = {
             location: 'Viewer'
         }
     }
+
+    //COMP 44E componentDidMount
+    componentDidMount() {
+        this.props.getBio(this.props.match.params.bioID)
+        console.log(this.props)
+    }
+
     render() {
+
         return (
             <div>
-                <p>This is the Viewer Component. The only thing it can do is receive props!</p>
-            
-                <h6>This is the props that was sent: {this.props.someProps}</h6>
-                <Footer 
-                // COMP 36C CALLING STATE
-                location={this.state.location}/>
+                <p>This is the viewer component.</p>
+                <h3>{this.props.bioViewer.fullname}</h3>
+                <h4>{this.props.bioViewer.date_of_birth}</h4>
+                <h5>{this.props.bioViewer.place_of_birth}</h5>
+                <h6>{this.props.bioViewer.how_tall}</h6>
+                <p>{this.props.bioViewer.body}</p>
+
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    console.log('state', state)
+    return {
+        bioViewer: state.bioViewer
+    }
+}
+
+export default connect(mapStateToProps, { getBio })(Viewer)

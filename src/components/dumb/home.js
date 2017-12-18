@@ -1,3 +1,4 @@
+//COMP 37E-1 IMPORT
 import React from 'react';
 import Footer from './footer';
 
@@ -11,4 +12,5 @@ const Home = () => {
     )
 }
 
+//COMP 37E-2 EXPORT
 export default Home;
